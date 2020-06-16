@@ -16,12 +16,12 @@ List<calls> callData = [
       name: "Dr. Ram",
       time: "10 April, 6:03 pm",
       imageUrl:
-      "https://library.kissclipart.com/20190406/cwq/kissclipart-surgeon-icon-png-clipart-computer-icons-clip-art-e1b95eb686c71747.jpg"),
+      "https://cdn4.iconfinder.com/data/icons/people-of-medical-education-and-science/512/People_Medical_Education_Science_dentist_man-512.png"),
   new calls(
       name: "Dr. jain",
       time: "10 April, 6:03 pm",
       imageUrl:
-      "https://library.kissclipart.com/20190406/cwq/kissclipart-surgeon-icon-png-clipart-computer-icons-clip-art-e1b95eb686c71747.jpg"),
+      "https://cdn4.iconfinder.com/data/icons/people-of-medical-education-and-science/512/People_Medical_Education_Science_dentist_man-512.png"),
   new calls(
       name: "Dr.jain",
       time: "14 April, 6:08pm",

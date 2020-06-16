@@ -24,16 +24,16 @@ class _StatsScreenState extends State<StatsScreen> {
           _buildHeader(),
           _buildRegionTabBar(),
           _buildStatsTabBar(),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            sliver: SliverToBoxAdapter(
-              child: StatsGrid(),
-            ),
-          ),
+//          SliverPadding(
+//            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+//            sliver: SliverToBoxAdapter(
+//              child: StatsGrid(),
+//            ),
+//          ),
           SliverPadding(
             padding: const EdgeInsets.only(top: 20.0),
             sliver: SliverToBoxAdapter(
-              child: CovidBarChart(covidCases: covidUSADailyNewCases),
+              child: CovidBarChart(covidCases: covidUSADailyNewCases,title: "Ultrafiltration"),
             ),
           ),
         ],
@@ -46,7 +46,7 @@ class _StatsScreenState extends State<StatsScreen> {
       padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
         child: Text(
-          'Statistics',
+          'Reports',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 25.0,
@@ -78,10 +78,21 @@ class _StatsScreenState extends State<StatsScreen> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.white,
             tabs: <Widget>[
-              Text('My Country'),
-              Text('Global'),
+              Text('UltraFiltraion'),
+              Text('CreateNine'),
             ],
-            onTap: (index) {},
+            onTap: (index) {
+              if(index == 0){
+                setState(() {
+                  CovidBarChart(covidCases: covidUSADailyNewCases, title: 'UltraFiltraion');
+                });
+
+              }else{
+                setState(() {
+                CovidBarChart(covidCases: covidUSADailyNewCases, title: 'CreateNine');
+              });
+              }
+            },
           ),
         ),
       ),

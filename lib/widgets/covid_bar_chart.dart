@@ -4,13 +4,13 @@ import 'package:covid/config/styles.dart';
 
 class CovidBarChart extends StatelessWidget {
   final List<double> covidCases;
-
-  const CovidBarChart({@required this.covidCases});
+  final String title;
+  const CovidBarChart({@required this.covidCases,this.title});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350.0,
+      height: 400.0,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -24,7 +24,7 @@ class CovidBarChart extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             alignment: Alignment.centerLeft,
             child: Text(
-              'Daily New Cases',
+              title,
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
