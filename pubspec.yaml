@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   bubble_tab_indicator: ^0.1.4
   fl_chart: ^0.9.4
+  animated_text_kit: ^2.2.0
 
 dev_dependencies:
   flutter_test:

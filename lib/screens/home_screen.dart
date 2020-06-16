@@ -3,6 +3,8 @@ import 'package:covid/config/palette.dart';
 import 'package:covid/config/styles.dart';
 import 'package:covid/data/data.dart';
 import 'package:covid/widgets/widgets.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import '../widgets/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: CustomAppBar(),
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
@@ -25,8 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildYourOwnTest(screenHeight),
         ],
       ),
+
     );
   }
+
 
   SliverToBoxAdapter _buildHeader(double screenHeight) {
     return SliverToBoxAdapter(
@@ -137,38 +142,40 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Precautions',
+              'Updates',
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 20.0),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: prevention
-                    .map((e) => Column(
-                  children: <Widget>[
-                    Image.asset(
-                      e.keys.first,
-                      height: screenHeight * 0.12,
-                    ),
-                    SizedBox(height: screenHeight * 0.015),
-                    Text(
-                      e.values.first,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
-                    )
+          Container(
+            height: 80,
+            width: 300,
+            padding: EdgeInsets.all(10.0),
+            child: Card(
+              child: FadeAnimatedTextKit(
+
+                  onTap: () {
+                    print("Tap Event");
+                  },
+                  totalRepeatCount: 10,
+                  text: [
+                    "Keep a clean area for treatment.",
+                    "Wash your hands thoroughly.",
+                    "Take care of your access or catheter",
+                    "Check the notification"
                   ],
-                ))
-                    .toList(),
+                  textStyle: TextStyle(color: Colors.blueAccent,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w400
+                  ),
+                  textAlign: TextAlign.start,
+                  alignment: AlignmentDirectional.center // or Alignment.topLeft
               ),
-            )
+            ),
+          )
+
           ],
         ),
       ),
@@ -179,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SliverToBoxAdapter(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          vertical: 10.0,
+          vertical: 5.0,
           horizontal: 20.0,
         ),
         padding: const EdgeInsets.all(10.0),
