@@ -1,4 +1,5 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+import 'package:covid/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid/config/palette.dart';
 import 'package:covid/config/styles.dart';
@@ -14,6 +15,7 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(),
       body: CustomScrollView(
