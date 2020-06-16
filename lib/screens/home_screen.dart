@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _country = 'USA';
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'How would you like us to \nhelp today?',
                   style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w600,
+                ),
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
