@@ -1,3 +1,4 @@
+import 'package:covid/screens/timer.dart';
 import 'package:covid/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid/config/palette.dart';
@@ -183,51 +184,56 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: <Widget>[
           SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 20.0,
-            ),
-            padding: const EdgeInsets.all(10.0),
-            height: screenHeight * 0.15,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFFAD9FE4), Palette.primaryColor],
+          InkWell(
+            child: Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10.0,
+                horizontal: 20.0,
               ),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Image.asset('assets/images/own_test.png'),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Your next session is\n scheduled in :',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.all(10.0),
+              height: screenHeight * 0.15,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFFAD9FE4), Palette.primaryColor],
+                ),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Image.asset('assets/images/own_test.png'),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Your next session is\n scheduled in :',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: screenHeight * 0.01),
-                    Text(
-                      '01:00:23 hr',
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
+                      SizedBox(height: screenHeight * 0.01),
+                      Text(
+                        '01:00:23 hr',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                        maxLines: 2,
                       ),
-                      maxLines: 2,
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => TimerApp()));
+            },
+          )
         ],
       )
     );
