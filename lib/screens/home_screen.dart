@@ -1,10 +1,10 @@
+import 'package:covid/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid/config/palette.dart';
 import 'package:covid/config/styles.dart';
 import 'package:covid/data/data.dart';
 import 'package:covid/widgets/widgets.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import '../widgets/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -24,14 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: ClampingScrollPhysics(),
         slivers: <Widget>[
           _buildHeader(screenHeight),
-          _buildPreventionTips(screenHeight),
           _buildYourOwnTest(screenHeight),
+          _buildPreventionTips(screenHeight),
         ],
       ),
 
     );
   }
-
 
   SliverToBoxAdapter _buildHeader(double screenHeight) {
     return SliverToBoxAdapter(
@@ -51,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Hi,  Satyam',
+                  'Good Afternoon, \nSatyam',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25.0,
@@ -65,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Have You configured \nthe device?',
+                  'How would you like us to \nhelp today?',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,
@@ -74,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  'If you are facing any issues in configuring the device please use the chatbot or call physician',
+                  'We are always available to help you. Please \ninteract with us via chatbot or call',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 15.0,
@@ -142,40 +141,37 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Updates',
+              'Precautions',
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(height: 20.0),
-          Container(
-            height: 80,
-            width: 300,
-            padding: EdgeInsets.all(10.0),
-            child: Card(
-              child: FadeAnimatedTextKit(
-
-                  onTap: () {
-                    print("Tap Event");
-                  },
-                  totalRepeatCount: 10,
-                  text: [
-                    "Keep a clean area for treatment.",
-                    "Wash your hands thoroughly.",
-                    "Take care of your access or catheter",
-                    "Check the notification"
+            const SizedBox(height: 20.0,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: prevention
+                  .map((e) => Column(
+                  children: <Widget>[
+                    Image.asset(
+                      e.keys.first,
+                      height: screenHeight * 0.12,
+                    ),
+                    SizedBox(height: screenHeight * 0.015),
+                    Text(
+                      e.values.first,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
+                    )
                   ],
-                  textStyle: TextStyle(color: Colors.blueAccent,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w400
-                  ),
-                  textAlign: TextAlign.start,
-                  alignment: AlignmentDirectional.center // or Alignment.topLeft
+                )).toList(),
               ),
-            ),
-          )
-
+            )
           ],
         ),
       ),
@@ -184,49 +180,56 @@ class _HomeScreenState extends State<HomeScreen> {
 
   SliverToBoxAdapter _buildYourOwnTest(double screenHeight) {
     return SliverToBoxAdapter(
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 5.0,
-          horizontal: 20.0,
-        ),
-        padding: const EdgeInsets.all(10.0),
-        height: screenHeight * 0.15,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFAD9FE4), Palette.primaryColor],
-          ),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Image.asset('assets/images/own_test.png'),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 20.0,
+            ),
+            padding: const EdgeInsets.all(10.0),
+            height: screenHeight * 0.15,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFAD9FE4), Palette.primaryColor],
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text(
-                  'Your next session is\n scheduled in :',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  '01:00:23 hr',
-                  style: const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 16.0,
-                  ),
-                  maxLines: 2,
-                ),
+                Image.asset('assets/images/own_test.png'),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Your next session is\n scheduled in :',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.01),
+                    Text(
+                      '01:00:23 hr',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
+                      maxLines: 2,
+                    ),
+                  ],
+                )
               ],
-            )
-          ],
-        ),
-      ),
+            ),
+          ),
+        ],
+      )
     );
   }
 }

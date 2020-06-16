@@ -9,7 +9,6 @@ class CustomDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-
             decoration: BoxDecoration(
 
                 color: Palette.primaryColor.withOpacity(0.7),
